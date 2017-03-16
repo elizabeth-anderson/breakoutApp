@@ -144,23 +144,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var xPosition = 10
         var yPosition = 20
         
-        let blockWidth = (Int)((screenWidth - 60)/5)
-        let blockHeight = 20
+        let brickWidth = (Int)((screenWidth - 60)/5)
+        let brickHeight = 20
         
         for rows in 1...3
         {
             for columns in 1...5
             {
-                let block = Block(frame: CGRect(x: xPosition, y: yPosition, width: blockWidth, height: blockHeight))
-                block.backgroundColor = UIColor.red()
+                let brick = Brick(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
+                brick.backgroundColor = UIColor.red()
                 view.addSubview(block)
                 
-                blockArray.append(block)
-                allViewsArray.append(block)
+                brickArray.append(brick)
+                allViewsArray.append(brick)
                 
-                blockCount++
+                brickCount++
                 
-                xPosition += (blockWidth + 10)
+                xPosition += (brickWidth + 10)
             }
         }
         brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
