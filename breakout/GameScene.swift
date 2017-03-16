@@ -18,11 +18,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     var brick : SKSpriteNode!
     
-    var brick1 : SKSpriteNode!
-    
-    var brick2 : SKSpriteNode!
-    
     var brickHit = 0
+    
+    var brickArray: SKSpriteNode = []
     
     override func didMove(to view: SKView)
     {
@@ -63,18 +61,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             print ("brick hit")
             brickHit += 1
-        }
-        if contact.bodyA.node?.name == "brick1"||contact.bodyB.node?.name == "ball"
-        {
-            print ("brick hit")
-          
-          
-        }
-        if contact.bodyA.node?.name == "brick2"||contact.bodyB.node?.name == "ball"
-        {
-            print ("brick hit")
-            
-         
         }
         else if contact.bodyA.node?.name == "loseZone"||contact.bodyB.node?.name == "loseZone"
         {
@@ -145,19 +131,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         var xPosition = 10
         var yPosition = 20
         
-        let brickWidth = (Int)((screenWidth - 60)/5)
+        let brickWidth = (Int)((frame.width - 60)/5)
         let brickHeight = 20
         
         for rows in 1...3
         {
             for columns in 1...5
             {
-                let brick = Brick(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
+                let brick = self.brick(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
                 brick.backgroundColor = UIColor.red()
-                view.addSubview(block)
+                view.addSubview(brick)
                 
                 brickArray.append(brick)
-                allViewsArray.append(brick)
+                
                 brickCount++
                 
                 xPosition += (brickWidth + 10)
