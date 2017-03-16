@@ -158,7 +158,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 
                 brickArray.append(brick)
                 allViewsArray.append(brick)
-                
                 brickCount++
                 
                 xPosition += (brickWidth + 10)
