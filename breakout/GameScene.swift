@@ -138,7 +138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for columns in 1...5
             {
-                let brick = self.brick(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
+                let brick = SKSpriteNode(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
                 brick.backgroundColor = UIColor.red()
                 view.addSubview(brick)
                 
