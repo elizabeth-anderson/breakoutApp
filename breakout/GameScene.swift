@@ -143,6 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             xPosition = Int(frame.midX - (frame.width / 2))
             yPosition += (brickHeight + 10)
         }
+        brick =
         brick.name = "brick"
         brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
         brick.physicsBody?.isDynamic = false
