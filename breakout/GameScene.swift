@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         if brickHit == 1
         {
-           // brick.removeFromParent()
+            brick.removeFromParent()
             
         }
     }
@@ -128,7 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func makeBrick()
     {
-        var xPosition = 10
+        var xPosition = Int(frame.midX - (frame.width / 2))
         var yPosition = 20
         
         let brickWidth = (Int)((frame.width - 60)/5)
@@ -138,26 +138,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for columns in 1...5
             {
-                let brick = SKSpriteNode(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
-                brick.backgroundColor = UIColor.red()
-                view.addSubview(brick)
-                
-                addChild(brick)
-                
-                
-               
-                
-                //brickCount++
-                
+                let brick = (x: xPosition, y: yPosition, width: brickWidth, height: brickHeight)
                 xPosition += (brickWidth + 10)
             }
+            xPosition = Int(frame.midX - (frame.width / 2))
+            yPosition += (brickHeight + 10)
         }
-//        brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
-//        brick.position = CGPoint(x: frame.midX, y: frame.maxY - 30)
-//        brick.name = "brick"
-//        brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
-//        brick.physicsBody?.isDynamic = false
-//        addChild(brick)
+        brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
+        brick.position = CGPoint(x: frame.midX, y: frame.maxY - 30)
+        brick.name = "brick"
+        brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
+        brick.physicsBody?.isDynamic = false
+        addChild(brick)
     }
 
     func makeLoseZone()
