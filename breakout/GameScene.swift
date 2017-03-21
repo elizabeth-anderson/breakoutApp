@@ -143,7 +143,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             xPosition = Int(frame.midX - (frame.width / 2.6))
             yPosition += (brickHeight + 10)
         }
-        
     }
     
     func makeBricks(xPoint: Int, yPoint:Int, brickWidth: Int, brickHeight: Int)
