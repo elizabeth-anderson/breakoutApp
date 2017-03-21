@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     var brickHit = 0
     
-    var brickArray: SKSpriteNode = []
+  
     
     override func didMove(to view: SKView)
     {
@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
         if brickHit == 1
         {
-            brick.removeFromParent()
+           // brick.removeFromParent()
             
         }
     }
@@ -138,23 +138,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for columns in 1...5
             {
-                let brick = self.brick(frame: CGRect(x: xPosition, y: yPosition, width: brickWidth, height: brickHeight))
-                brick.backgroundColor = UIColor.red()
-                view.addSubview(brick)
+                let brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
                 
-                brickArray.append(brick)
+                addChild(brick)
                 
-                brickCount++
+                
+               
+                
+                //brickCount++
                 
                 xPosition += (brickWidth + 10)
             }
         }
-        brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
-        brick.position = CGPoint(x: frame.midX, y: frame.maxY - 30)
-        brick.name = "brick"
-        brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
-        brick.physicsBody?.isDynamic = false
-        addChild(brick)
+//        brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
+//        brick.position = CGPoint(x: frame.midX, y: frame.maxY - 30)
+//        brick.name = "brick"
+//        brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
+//        brick.physicsBody?.isDynamic = false
+//        addChild(brick)
     }
 
     func makeLoseZone()
