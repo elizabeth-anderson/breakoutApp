@@ -167,6 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         loseZone.physicsBody?.isDynamic = false
         addChild(loseZone)
     }
+    
 }
 
 
