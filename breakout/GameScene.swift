@@ -148,7 +148,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         brick.physicsBody?.isDynamic = false
         addChild(brick)
     }
-
     func makeLoseZone()
     {
         let loseZone = SKSpriteNode(color: UIColor.purple, size: CGSize(width:frame.width, height: 50))//change color to clear later
@@ -158,6 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         loseZone.physicsBody?.isDynamic = false
         addChild(loseZone)
     }
+    
 }
 
 
