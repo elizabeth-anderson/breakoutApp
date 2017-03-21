@@ -128,7 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func makeBrick()
     {
-        var xPosition = Int(frame.midX - (frame.width / 2))
+        var xPosition = Int(frame.midX - (frame.width / 2.6))
         var yPosition = 120
         
         let brickWidth = (Int)((frame.width - 60)/5)
@@ -141,7 +141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 makeBricks(xPoint: xPosition, yPoint: yPosition, brickWidth: brickWidth, brickHeight: brickHeight)
                 xPosition += (brickWidth + 10)
             }
-            xPosition = Int(frame.midX - (frame.width / 2))
+            xPosition = Int(frame.midX - (frame.width / 2.6))
             yPosition += (brickHeight + 10)
         }
     }
