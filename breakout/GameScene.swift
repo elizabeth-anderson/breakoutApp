@@ -129,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     func makeBrick()
     {
         var xPosition = Int(frame.midX - (frame.width / 2))
-        var yPosition = 20
+        var yPosition = 120
         
         let brickWidth = (Int)((frame.width - 60)/5)
         let brickHeight = 20
@@ -138,20 +138,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for columns in 1...5
             {
-                let brick = (x: xPosition, y: yPosition, width: brickWidth, height: brickHeight)
+                makeBricks(xPoint: xPosition, yPoint: yPosition, brickWidth: brickWidth, brickHeight: brickHeight)
                 xPosition += (brickWidth + 10)
             }
             xPosition = Int(frame.midX - (frame.width / 2))
             yPosition += (brickHeight + 10)
         }
-        brick = SKSpriteNode(color: UIColor.red, size: CGSize(width:frame.width/3, height: frame.height/25))
-        brick.position = CGPoint(x: frame.midX, y: frame.maxY - 30)
+    }
+    
+    func makeBricks(xPoint: Int, yPoint:Int, brickWidth: Int, brickHeight: Int)
+    {
+        let brickWidth = (Int)((frame.width - 60)/5)
+        let brickHeight = 20
+        brick = SKSpriteNode(color: UIColor.yellow, size: CGSize(width: brickWidth, height: brickHeight))
+        brick.position = CGPoint(x:xPoint, y: yPoint)
         brick.name = "brick"
         brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
         brick.physicsBody?.isDynamic = false
         addChild(brick)
     }
-
     func makeLoseZone()
     {
         let loseZone = SKSpriteNode(color: UIColor.purple, size: CGSize(width:frame.width, height: 50))//change color to clear later
