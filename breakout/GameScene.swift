@@ -69,7 +69,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         if brickHit == 1
         {
             brick.removeFromParent()
-            
         }
     }
     
@@ -138,7 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         {
             for columns in 1...5
             {
-                makeBricks(xPoint: xPosition, yPoint: yPosition, brickWidth: brickWidth, brickHeight: brickHeight)
+                var brick = (x: xPosition, y: yPosition, width: brickWidth, height: brickHeight)
                 xPosition += (brickWidth + 10)
             }
             xPosition = Int(frame.midX - (frame.width / 2.6))
