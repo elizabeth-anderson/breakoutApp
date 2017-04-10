@@ -4,8 +4,6 @@
 //
 //  Created by Elizabeth on 3/9/17.
 //  Copyright © 2017 Elizabeth. All rights reserved.
-//
-// hello hi bye 
 
 import SpriteKit
 import GameplayKit
@@ -20,8 +18,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     var brickHit = 0
     
-  
-    
     override func didMove(to view: SKView)
     {
         physicsWorld.contactDelegate = self
@@ -32,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         makeBall()
         makePaddle()
         makeBrick()
+        makeLoseZone()
         
         ball.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 3))//puts ball in motion
       
@@ -57,21 +54,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     func didBegin(_ contact: SKPhysicsContact)
     {
-        if contact.bodyA.node?.name == "brick"||contact.bodyB.node?.name == "ball"
+        if contact.bodyA.node?.name == "brick"//||contact.bodyB.node?.name == "ball"
         {
+             removeChildren(in: nodes(at: (contact.bodyA.node?.position)!))
             print ("brick hit")
             brickHit += 1
         }
-        else if contact.bodyA.node?.name == "loseZone"||contact.bodyB.node?.name == "loseZone"
+        else if contact.bodyB.node?.name == "brick"//||contact.bodyB.node?.name == "loseZone"
         {
+             removeChildren(in: nodes(at: (contact.bodyB.node?.position)!))
             print("you lose")
+            brickHit += 1
         }
-        if brickHit == 1
+        if brickHit == 15
         {
-            brick.removeFromParent()
+            UIAlertAction.init(title: "you win", style: UIAlertActionStyle.default, handler: nil)
         }
     }
-    
     func createBackground() // creates rolling star bacckground
     {
         let stars = SKTexture(imageNamed: "stars")
@@ -133,11 +132,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         let brickWidth = (Int)((frame.width - 60)/5)
         let brickHeight = 20
         
-        for rows in 1...3
+        for rows in 1...4
         {
             for columns in 1...5
             {
-                var brick = (x: xPosition, y: yPosition, width: brickWidth, height: brickHeight)
+                makeBricks(xPoint: xPosition, yPoint: yPosition, brickWidth: brickWidth, brickHeight: brickHeight)
                 xPosition += (brickWidth + 10)
             }
             xPosition = Int(frame.midX - (frame.width / 2.6))
@@ -149,7 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         let brickWidth = (Int)((frame.width - 60)/5)
         let brickHeight = 20
-        brick = SKSpriteNode(color: UIColor.yellow, size: CGSize(width: brickWidth, height: brickHeight))
+        brick = SKSpriteNode(color: UIColor.red, size: CGSize(width: brickWidth, height: brickHeight))
         brick.position = CGPoint(x:xPoint, y: yPoint)
         brick.name = "brick"
         brick.physicsBody = SKPhysicsBody(rectangleOf: brick.size)
